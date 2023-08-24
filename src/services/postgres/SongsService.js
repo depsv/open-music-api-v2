@@ -41,8 +41,10 @@ class SongsService {
             text: 'SELECT id, title, performer FROM songs WHERE lower(title) LIKE $1 AND lower(performer) LIKE $2',
             values: [`%${title.toLowerCase()}%`, `%${performer.toLowerCase()}%`]
         }
-        const result = await this._pool.query();
-        return result.rows.map(mapDBToModel);
+        const result = await this._pool.query(query);
+        
+        return result.rows;
+        // return result.rows.map(mapDBToModel);
     }
 
     async getSongById(id) {
@@ -63,7 +65,7 @@ class SongsService {
     async editSongById(id, { title, year, genre, performer, duration, albumId }) {
         const updatedAt = new Date().toISOString();
         const query = {
-            text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, albumId = $6, updated_at = $7 WHERE id = $8 RETURNING id',
+            text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, album_id = $6, updated_at = $7 WHERE id = $8 RETURNING id',
             values: [title, year, genre, performer, duration, albumId, updatedAt, id],
         };
 

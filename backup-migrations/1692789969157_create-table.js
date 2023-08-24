@@ -51,7 +51,7 @@ exports.up = pgm => {
             type: 'INT',
             notNull: false,
         },
-        albumId: {
+        album_id: {
             type: 'VARCHAR(50)',
             notNull: false,
             references: '"albums"',
@@ -67,7 +67,7 @@ exports.up = pgm => {
         },
     });
 
-    pgm.createIndex('songs', 'albumId');
+    pgm.createIndex('songs', 'album_id');
 };
 
 exports.down = pgm => {

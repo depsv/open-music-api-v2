@@ -43,7 +43,7 @@ class AlbumsService {
         const album = result.rows[0];
 
         const querySong = {
-            text: 'SELECT id, title, performer FROM songs where albumId = $1',
+            text: 'SELECT id, title, performer FROM songs where album_id = $1',
             values: [album.id],
         }
 
