@@ -1,21 +1,13 @@
 {
     "env": {
+        "commonjs": true,
         "es2021": true,
         "node": true
     },
-    "extends": [
-        "airbnb-base"
-    ],
+    "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2020
+        "ecmaVersion": "latest"
     },
     "rules": {
-        "no-console": "off",
-        "linebreak-style": "off",
-        // Indent with 4 spaces
-        "indent": [
-            "error",
-            4, 8, 12
-        ]
     }
 }
